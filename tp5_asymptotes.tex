@@ -1,0 +1,113 @@
+
+\section{Asymptotes parallèles aux axes.}
+Soit $f$ une fonction définie sur un intervalle $I$ de $\mathbb{R}$. On se place aux bornes de ce domaine de définition.
+
+Par exemple, si $\displaystyle f(x)=\frac{3x-\pi}{x+4}$, le domaine de définition est $\displaystyle I=\left]-\infty,-4\right[ \cup \left]-4,+\infty,\right[$.
+
+On se place alors au voisinage de $-4$ et au voisinage de $\pm \infty$, bornes de l'ensemble de définition. L'objectif consiste à déterminer l'allure de la courbe aux bornes de l'intervalle.
+\bigskip
+\begin{itemize}
+\item[$\bullet$] $\displaystyle \lim_{x\rightarrow -4^-}f(x)=....$. Graphiquement, la courbe représentative ...........
+\item[$\bullet$] $\displaystyle \lim_{x\rightarrow -4^+}f(x)=....$. Graphiquement, la courbe représentative ...........
+\item[$\bullet$] $\displaystyle \lim_{x\rightarrow -\infty}f(x)=....$. Graphiquement, la courbe représentative ...........
+\item[$\bullet$] $\displaystyle \lim_{x\rightarrow +\infty}f(x)=....$. Graphiquement, la courbe représentative ........... 
+\end{itemize}
+\section{Asymptote oblique.}
+\textbf{Cadre:} On suppose $\displaystyle \lim_{x\rightarrow +\infty}f(x)=\pm\infty$ ou  $\displaystyle \lim_{x\rightarrow -\infty}f(x)=\pm\infty$
+\bigskip\\
+On d\'esire savoir s'il est possible d'obtenir une approximation affine de $f(x)$ $i.e$ \textbf{$f(x) \approx ax+b $} pour des valeurs de $x$ \'elev\'ees en valeur absolue.
+\bigskip\\
+Par exemple, si $f(x)= 2x-1+\displaystyle \frac{4}{x}$ alors $f(x) \approx 2x-1$ au voisinage de $\pm\infty$ car $\displaystyle \lim_{x\rightarrow \pm\infty} \displaystyle \frac{4}{x}=0$.
+%et $-\infty$.\\
+%L'erreur commise si on remplace $f(x)$ par $x+1$ au voisinage de  $+\infty$ ou $-\infty$ est de l'ordre de $\displaystyle \frac{4}{x}$faible.
+%La repr\'esentation graphique de la fonction $x \mapsto f(x)$ est tr\`es proche de celle de la droite d'\'equation $y=ax+b$ au voisinage de  $+\infty$ ou $-\infty$.
+\bigskip
+\\\textbf{Obtention des param\`etres a et b} (L'\'etude est similaire en $-\infty$)
+
+Si, au voisinage de l'infini, $f(x)\approx ax+b$ alors $\displaystyle \frac{f(x)}{x}\approx a+\frac{b}{x}$ en consid\'erant des valeurs \'elev\'ees de $x$ on obtient une valeur approch\'ee de $a$.
+\bigskip
+\begin{itemize} 
+\item \textbf{Étape 1}\\
+$\displaystyle \lim_{x\rightarrow +\infty}\frac{f(x)}{x}=\begin{array}\{{cl}.
+\infty & (C_{f}) \hbox{admet une branche parabolique de direction} [Oy)\\
+0 & (C_{f}) \hbox{admet une branche parabolique de direction} [Ox)\\
+a & (C_{f}) \hbox{admet la direction asymptotique } y=ax,\\
+&\hbox{on \'etudie }f(x)-ax \qquad \hbox{ ( \'etape 2 )}\\
+\end{array}$
+\end{itemize}
+\bigskip
+Si, au voisinage de l'infini, $f(x)\approx ax+b$ alors $\displaystyle \left( f(x)-a.x\right)\approx b$ en consid\'erant des valeurs \'elev\'ees de $x$ on obtient une valeur approch\'ee de $a$.
+\bigskip
+\begin{itemize} 
+\item \textbf{Étape 2}\\
+$\displaystyle \lim_{x\rightarrow +\infty}(f(x)-a.x)=\begin{array}\{{cl}.
+\infty & (C_{f}) \hbox{admet une branche parabolique de direction } y=ax\\
+b & y=ax+b\hbox{ est asymptote \`a la courbe }(C_{f})\\
+\hbox{pas de limite}&(C_{f}) \hbox{admet la direction asymptotique } y=ax\\ 
+%&\hbox{au voisinage de }+\infty\\
+\end{array}$
+\end{itemize}
+
+
+
+\section{Exercices}
+L'outil logiciel {\fontfamily{lmtt}\selectfont Scilab} vous permettra, dans cette séance, de vérifier vos résultats grâce aux représentations graphiques des différentes fonctions. Si le logiciel ne donne pas les résultats que vous obtenez théoriquement, 
+\begin{itemize}
+\item[$\bullet$] soit vous avez raison, et vous devez comprendre et expliquer pourquoi le logiciel {\fontfamily{lmtt}\selectfont Scilab} restitue un résultat incohérent ;
+\item[$\bullet$] soit vous avez tort, et le logiciel vous conduira à formuler une conjecture qu'il vous faudra démontrer. Au passage, vous devrez trouver votre erreur dans votre démonstration première ;
+\end{itemize}
+\bigskip
+\textbf{Avant tout essai sur le logiciel Scilab, vous expliquerez à l'enseignant ce que vous souhaitez tester.}
+\bigskip\\
+\textbf{Exercice 1 :}
+
+Pour chacune des fonctions suivantes, \'ecrire les \'equations des asymptotes.
+\begin{enumerate}
+\item $\displaystyle f_{1}(x)=\frac{3x-1}{x+2}$
+\item $\displaystyle f_{2}(x)=\frac{2x-1}{x^2-3x+2}$
+\item $\displaystyle f_{3}(x)=\frac{x^2+2x+3}{x+1}$
+\end{enumerate}
+\bigskip
+\textbf{Exercice 2 :}
+
+Trouvez les asymptotes (ou les directions asymptotiques) des courbes repr\'esentatives des fonctions suivantes:
+\begin{enumerate}
+\item $\displaystyle g_{1}(x)=x+\sin x$
+\item $\displaystyle g_{2}(x)=\sqrt{2x^2-x+3}$
+\item $\displaystyle g_{3}(x)=\frac{2x^3+3x^2+2}{(x+1)^2}$
+%\item $\displaystyle f_{3}(x)=\frac{x^3-x^2-4x+5}{x^2+x-2}\qquad \qquad \qquad \displaystyle f_{4}(x)=\sqrt{2x^2-x+3}$
+\end{enumerate}
+\bigskip
+\textbf{Exercice 3 :}
+
+Après avoir déterminé l'ensemble de définition, trouvez toutes les asymptotes des courbes repr\'esentatives des fonctions suivantes:
+\begin{enumerate}
+\item $\displaystyle h_{1}(x)=x+\sqrt{x^2-1}$
+\item $\displaystyle h_{2}(x)=\sqrt{x+\sqrt{x}}-\sqrt{x}$
+\item $\displaystyle h_{3}(x)=x\sqrt{\frac{x-1}{x+1}}$
+%\item $\displaystyle \lim_{x\rightarrow +\infty}\sqrt{x+\sqrt{x}}-\sqrt{x}$
+%\item $\displaystyle \lim_{|x|\rightarrow +\infty}x+\sqrt{x^2-1}$
+%\item $\displaystyle h_{3}(x)=\frac{2x^3+3x^2+2}{(x+1)^2}$
+%\item $\displaystyle f_{3}(x)=\frac{x^3-x^2-4x+5}{x^2+x-2}\qquad \qquad \qquad \displaystyle f_{4}(x)=\sqrt{2x^2-x+3}$
+\end{enumerate}
+\section{Un exemple de tracé de fonction avec le logiciel}
+
+Voici les instructions {\fontfamily{lmtt}\selectfont Scilab} qui permettent de tracer la fonction 
+\begin{center}
+$\displaystyle x \mapsto \frac{x^2+x-1}{x+1}$ sur l'intervalle $[-10;-1[\cup]-1;10]$
+\end{center}
+\begin{lstlisting}[language={Scilab}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+clf()//nettoie la fenêtre graphique
+B=[-10 -10 10 10];//détermine la fenêtre graphique
+
+x=[[-10:0.1:-1.01][-0.99:0.01:10]];//création d'un vecteur sur lequel la fonction sera évaluée.
+// Attention, on exclut de ce vecteur les valeurs interdites de la fonction (ici -1).
+
+deff('y=u_1(t)','y=((t^2+t-1)/(1+t))');//définition d'une fonction
+y=feval(x,u_1)//évaluation de cette fonction aux différents points contenus dans le vecteur x.
+plot2d(x,y,style=3,rect=B)//Tracé de la fonction en vert
+
+
+\end{lstlisting}
+
+Que fait le logiciel autour du point $-1$?

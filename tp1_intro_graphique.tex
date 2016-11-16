@@ -1,0 +1,483 @@
+Les objectifs de cette séance sont les suivants
+\begin{itemize}
+   \item[$\bullet$] présenter le logiciel {\fontfamily{lmtt}\selectfont Spyder}
+   \item[$\bullet$] appréhender les instructions du langage {\fontfamily{lmtt}\selectfont Python} pour des représentations graphiques
+ \end{itemize}
+
+\section{Fenêtre principale de {\fontfamily{lmtt}\selectfont Spyder}}
+\texttt{Python} est un langage de programmation, comme l'est le langage C. Si on complète ce langage avec des bibliothèques de fonctions mathématiques, on obtient un outil de travail très puissant.
+\bigskip\\
+L'environnement de développement intégré {\fontfamily{lmtt}\selectfont Spyder} va vous permettre de programmer en \texttt{Python}. 
+\bigskip
+
+\includegraphics[scale=0.25]{images/spyder_ecran.png}
+
+\section{La console {\fontfamily{lmtt}\selectfont Python}}
+
+\subsection{Choix de la console}
+\begin{center}
+ \includegraphics[scale=0.25]{images/menu_console_choix_python.png}
+\end{center}
+Dans la barre du menu de {\fontfamily{lmtt}\selectfont Spyder}
+ \begin{itemize}
+   \item[$\bullet$] choisir le signet {\fontfamily{lmtt}\selectfont Consoles} 
+   \item[$\bullet$] puis {\fontfamily{lmtt}\selectfont Console Python}
+ \end{itemize}
+Une fenêtre s'ouvre en bas à droite de {\fontfamily{lmtt}\selectfont Spyder}
+ 
+\subsection{Calculs dans la console}
+Une fois la console ouverte, il est possible de faire des calculs comme dans une calculatrice mais aussi des programmes
+\begin{center}
+\includegraphics[scale=0.25]{images/calculs_dans_console.png}
+\end{center}
+
+\section{Éditeur de texte}
+Dès que l'on souhaite écrire un programme de plus d'une ligne, cela devient vite compliqué de tout taper dans la console. De plus, si l'on veut relancer des lignes de commandes, il faut retaper les lignes une à une.\\
+
+Une autre manière de travailler consiste à écrire des suites d'instructions dans un fichier texte séparé.
+On parle dans ce cas de l'écriture d'un script. 
+
+Cette méthode est indispensable dès que l'on souhaite faire un programme un peu long ou que l'on veut pouvoir facilement modifier des paramètres du programme sans avoir à tout retaper. Le logiciel {\fontfamily{lmtt}\selectfont Spyder} contient un éditeur de texte intégré qui apparaît sur la partie gauche de l'écran. 
+\begin{center}
+ \includegraphics[scale=0.25]{images/premier_prog_editeur_texte.png}
+\end{center}
+Toutes les commandes seront tapées dans \textbf{un fichier qui sera sauvergardé} sur votre compte. L'extension du fichier doit être {\fontfamily{lmtt}\selectfont .py}
+
+
+Pour obtenir l'exécution du script, il suffit de cliquer sur l'icône en forme de flèche verte \includegraphics[height=0.4cm]{images/fleche_execution_spyder.png}, raccourci $F5$.
+
+L'exécution du code est réalisé dans la {\fontfamily{lmtt}\selectfont console Python}, en bas à droite de l'écran.
+\section{Premier exemple}
+Taper les lignes suivantes dans l'éditeur de texte, enregistrer le fichier sous le nom {\fontfamily{lmtt}\selectfont premier\_prog.py} 
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from numpy import *
+
+x=4  #on affecte a x la valeur 3
+y=(x+1)**3  #on calcule (x+1)^3
+
+print('la variable y contient ',y)  #on affiche la valeur de y
+\end{lstlisting}
+\subsection{Comment définir $\pi$, $e$, $\sqrt{\hbox{  }}$, $\mathrm{arctan}(x)$ ?}
+
+
+ \begin{itemize}
+  \item[$\bullet$] La fonction $x \mapsto \sqrt{x}$ est stockée dans la bibliothèque \texttt{numpy}. Pour obtenir une valeur approchée du nombre réel $\displaystyle \sqrt{15}$ il faut taper, dans la console, {\fontfamily{lmtt}\selectfont sqrt(15)}
+    \bigskip
+  \item[$\bullet$] La fonction $x\mapsto \mathrm{e}^{x}$ est stockée dans la bibliothèque \texttt{numpy}. Pour obtenir une valeur approchée du nombre réel $\displaystyle \mathrm{e}$ il faut taper, dans la console, {\fontfamily{lmtt}\selectfont exp(1)} ou {\fontfamily{lmtt}\selectfont e}
+    \bigskip
+  \item[$\bullet$] La constante $\pi$ est stockée dans la bibliothèque \texttt{numpy}. Pour obtenir une valeur approchée du nombre réel $\displaystyle \pi$ il faut taper, dans la console, {\fontfamily{lmtt}\selectfont pi}
+    \bigskip
+  \item[$\bullet$] La fonction $x \mapsto \mathrm{arctan}(x)$ est stockée dans la bibliothèque \texttt{numpy}. Pour obtenir une valeur approchée du nombre réel $\displaystyle \mathrm{arctan}(1)$ il faut taper, dans la console, {\fontfamily{lmtt}\selectfont arctan(1)}
+  %\item[$\bullet$] {\fontfamily{lmtt}\selectfont exp(10)/factorial(10)}
+ \end{itemize}
+\bigskip
+Il faut impérativement importer la bibliothèque {\fontfamily{lmtt}\selectfont numpy} grâce à la commande
+\begin{center}
+{\fontfamily{lmtt}\selectfont from numpy import *}
+\end{center}
+à défaut, les fonctions comme $x \mapsto \sqrt{x}$, $x\mapsto \mathrm{e}^{x}$, les constantes comme {\fontfamily{lmtt}\selectfont pi} sont inconnues.
+\bigskip\\ 
+\textbf{Exercice :} Afficher, dans la console {\fontfamily{lmtt}\selectfont Python}, les valeurs approchées des nombres suivants
+\begin{itemize}
+ \item[$\bullet$] $\mathrm{e}$
+ \item[$\bullet$] $\pi$
+ \item[$\bullet$] $\displaystyle \left(\mathrm{e} - \pi \right)^3$
+ \item[$\bullet$] $\displaystyle \frac{1+\sqrt{5}}{2}$
+\end{itemize}
+\section{Représentation graphique.}
+\textit{Exemple} : Voici un script
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from matplotlib.pyplot import * #on importe toutes les fonctions
+            #utiles pour les graphiques
+x=[1,2,3]
+y=[-1,4,-8]
+
+plot(x,y)
+show() 
+plot(y,x)
+show()
+\end{lstlisting}
+\begin{enumerate}
+ \item Recopier ce script dans l'éditeur de texte puis l'exécuter.
+ \item Que fait la fonction {\fontfamily{lmtt}\selectfont plot()}?
+ %\item Comment sont positionnés les axes? Comment les faire passer par l'origine?
+\end{enumerate}
+\bigskip
+\textbf{Premier exercice}  :
+
+Taper, dans l'éditeur de texte, les instructions qui permettront d'obtenir la figure suivante :
+
+\begin{tikzpicture}
+    %\draw[very thin,color=gray] ;
+    \draw[-] (-1,-1) -- (1,-1);
+    \draw[-] (1,-1) -- (1,1) ;
+    \draw[-] (1,1) -- (-1,1) ;
+    \draw[-] (-1,1) -- (-1,-1) ;
+    \draw[-] (1,1) -- (0,3) ;
+    \draw[-] (-1,1) -- (0,3) ;
+
+\end{tikzpicture}
+
+\section{Représentation graphique d'une fonction.}
+\subsection{Premiers tracés}
+
+  On vous demande de taper \textbf{dans l'éditeur de texte} les commandes qui suivent, puis d'exécuter votre code.
+
+ \begin{tabular}{lll}
+\begin{minipage}{0.27\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily] 
+from numpy import *
+
+x=arange(0,5,1)
+print(x)
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}{0.27\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily] 
+from numpy import * 
+
+x=arange(0,5,1)
+print(x)
+
+y=sin(x)
+print(y)
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}{0.42\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily] 
+from numpy import *
+from matplotlib.pyplot import *
+
+x=arange(0,5,1)
+y=sin(x)
+plot(x,y)
+show() 
+\end{lstlisting}
+\end{minipage}
+ \\
+\end{tabular}
+\begin{enumerate}
+ \item Quel le résultat de chacun de ces blocs ?
+ \item Que fournit l'instruction {\fontfamily{lmtt}\selectfont  print(x.size)} ajoutée à chacun de ces blocs ?
+\end{enumerate}
+
+\subsection{Influence du pas de l'échantillonnage.}
+Quelle est la différence entre les trois blocs suivants ?
+\bigskip\\
+\begin{tabular}{lll}
+\begin{minipage}{0.32\textwidth}
+\begin{lstlisting}
+from matplotlib.pyplot import * 
+from numpy import *
+
+x=arange(0,6,3)
+print(x)
+y=sin(x)
+plot(x,y)
+show()
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}{0.32\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily]
+from matplotlib.pyplot import * 
+from numpy import *
+
+x=arange(0,6,1)
+print(x)
+y=sin(x)
+plot(x,y)
+show()
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}{0.32\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily]
+from matplotlib.pyplot import * 
+from numpy import *
+
+x=arange(0,6,.1)
+print(x)
+y=sin(x)
+plot(x,y)
+show()
+\end{lstlisting}
+\end{minipage}
+ \\
+\end{tabular}
+\begin{enumerate}
+ \item Quel est selon vous l'influence du pas d'échantillonnage?
+ \item Pouvez-vous prévoir ce que l'instruction {\fontfamily{lmtt}\selectfont  print(x.size)}, ajoutée en fin de programme, affichera dans chacun des 3 blocs?	
+\end{enumerate}
+\bigskip
+\textbf{Exercice} Construire les vecteurs suivants :
+   \begin{enumerate}
+ 	\item {\fontfamily{lmtt}\selectfont x=[0 2 4 6]}
+ 	\item {\fontfamily{lmtt}\selectfont x=[1 6 11 16 21 26 31 36 41]}
+ 	\item le vecteur qui contient tous les entiers positifs impairs inférieurs à 100
+\end{enumerate}
+\subsection{Utilisation de différents styles pour les représentations graphiques.}
+Quelle est la différence entre les trois blocs suivants ?
+\bigskip\\
+\begin{tabular}{lll}
+\begin{minipage}{0.32\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily]
+from matplotlib.pyplot import *
+from numpy import *
+
+x=arange(0,5.1,0.1)
+
+y=sin(x)
+
+clf() #on efface la figure
+plot(x,y,'-b') 
+show() 
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}{0.32\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily]
+from matplotlib.pyplot import *
+from numpy import *
+
+x=arange(0,5.1,0.1)
+
+y=sin(x)
+
+clf() #on efface la figure
+plot(x,y,'-.b') 
+show() 
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}{0.32\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily]
+from matplotlib.pyplot import *
+from numpy import *
+
+x=arange(0,5.1,0.1)
+
+y=sin(x)
+
+clf() #on efface la figure
+plot(x,y,':r') 
+show() 
+\end{lstlisting}
+\end{minipage}
+ \\
+\end{tabular}
+\subsection{Mettre de la couleur}
+
+Certaines couleurs sont déjà définies dans le logiciel
+\begin{center}
+\begin{tabular}{cccc}
+b: blue & g: green & r: red & c: cyan \\
+& & & \\
+m: magenta & y: yellow & k: black & w: white \\
+\end{tabular}
+\end{center}
+\subsection{Imposer la fenêtre dans laquelle on va tracer la courbe.}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from matplotlib.pyplot import *
+from numpy import *
+
+x=arange(0,5.1,0.1)
+
+y=sin(x)
+
+clf() #on efface la figure
+plot(x,y,'-b')
+axis([-3, 7, -1, 1])
+xlabel('Axe des x')
+ylabel('Axe des y')
+title('Premier graphique')
+show()  #en fonction du mode de compilation
+       #cette fonction ne sera pas necessaire
+\end{lstlisting}
+La fontion  {\fontfamily{lmtt}\selectfont axis()} permet de tracer la courbe dans une fenêtre (un rectangle) imposée.
+\bigskip\\
+Quelle est la signification de chacun des 4 paramètres de la fonction  {\fontfamily{lmtt}\selectfont axis([p1, p2, p3, p4])}
+
+\textbf{Dans l'exemple présent, quel serait le rectangle adéquat ?}
+
+
+\subsection{Ajouter une légende}
+Pour rendre un graphique plus lisible, plus compréhensible pour un tiers, il est intéressant d'y adjoindre une légende. La fonction {\fontfamily{lmtt}\selectfont legend()} va ajouter sur le graphique l'équation de la fonction tracée.
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from matplotlib.pyplot import *
+from numpy import *
+
+x=arange(0,5.1,0.1)
+
+y=sin(x)
+
+clf() #on efface la figure
+plot(x,y,'-b',label="sin")
+axis([-3, 7, -1, 1])
+xlabel('Axe des x')
+ylabel('Axe des y')
+title('Premier graphique')
+legend()
+show() #en fonction du mode de compilation
+       #cette fonction ne sera pas necessaire
+\end{lstlisting}
+
+\subsection{Exercice}
+Tracer la fonction $x\mapsto \cos(x)$ en rouge sur l'intervalle $[-2\pi;4\pi]$ en y ajoutant une légende. Vous choisirez un pas d'échantillonage ainsi qu'une fen\^etre graphique permettant de visualiser 3 périodes.\\
+\textbf{Faire valider par l'enseignant.}
+\section{Une onde sinusoïdale dépend-elle du pas d'échantillonnage?}
+Soit $f$ la fonction $x \mapsto \sin(100\pi x)$
+\begin{enumerate}
+\item Quelle est la période de la fonction $x \mapsto \sin(100\pi x)$ ? 
+\item Pour tracer la courbe, un premier étudiant propose les commandes suivantes :
+
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL]
+from matplotlib.pyplot import *
+from numpy import *
+
+x=arange(0,10,0.02)
+
+y=sin(100*pi*x)
+
+clf() #on efface la figure
+plot(x,y,'-b',label="sin")
+axis([0, 10, -1, 1])
+show() #en fonction du mode de compilation
+       #cette fonction ne sera pas necessaire
+\end{lstlisting} 
+
+Quel est le résultat de cette séquence ? Qu'en pensez-vous?
+\item Deux autres étudiants proposent les commandes suivantes :\\
+\begin{tabular}{ll}
+\begin{minipage}{0.45\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily]
+from matplotlib.pyplot import *
+from numpy import *
+
+x=arange(0,10,0.0201)
+
+y=sin(100*pi*x)
+
+clf() #on efface la figure
+plot(x,y,'-b',label="sin")
+axis([0, 10, -1, 1])
+show() 
+\end{lstlisting}
+\end{minipage}
+&
+\begin{minipage}{0.45\textwidth}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily]
+from matplotlib.pyplot import *
+from numpy import *
+
+x=arange(0,10,0.199)
+
+y=sin(100*pi*x)
+
+clf() #on efface la figure
+plot(x,y,'-b',label="sin")
+axis([0, 10, -1, 1])
+show() 
+\end{lstlisting}
+\end{minipage}
+ \\
+\end{tabular}
+
+
+Donner, à l'aide des graphiques, une valeur approchée de la période, puis de la pulsation, de chacune des courbes représentatives obtenues. Qu'en pensez-vous ?
+\item Comment choisir un pas d'échantillonnage raisonnable pour obtenir une représentation graphique correcte d'une fonction périodique de période $T$?
+\item Tracer une représentation graphique correcte de la fonction $x \mapsto \sin(100\pi x)$. On fera apparaître clairement la fonction sur 5 périodes. \textbf{Faire valider par l'enseignant.}
+\end{enumerate}
+\begin{comment}
+ \begin{corrige}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL]
+from matplotlib.pyplot import * 
+from numpy import *
+
+T=0.02
+x=arange(0,5*T,T/50)
+
+y=sin(100*pi*x)
+
+clf()
+plot(x,y,'-k')  #k pour une courbe en noir
+
+axis([0,5*T,-1,1])
+grid() #on ajoute une grille
+show()
+\end{lstlisting}
+
+ \end{corrige}
+\end{comment}
+\section{Plusieurs courbes sur le même graphique.}
+
+Il est possible d'ouvrir une fenêtre graphique avec un numéro avec la commande {\fontfamily{lmtt}\selectfont figure()}. Par exemple, en tapant {\fontfamily{lmtt}\selectfont figure(2)}, on ouvre, ou on rend active, la fenêtre graphique ayant le numéro 2. On travaille alors dans cette fenêtre.
+
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL]
+from matplotlib.pyplot import *
+from numpy import *
+
+x=arange(0,10,0.0199)
+
+y1=sin(pi*x)
+y2=cos(pi*x/2)
+
+figure(2) #on impose de travailler dans la figure 2
+
+clf() #on efface la figure
+plot(x,y1,'-b',label="sin")
+plot(x,y2,'-r',label="cos")
+
+axis([0, 10, -1, 1])
+legend()
+show() 
+\end{lstlisting}
+\bigskip
+Pour tracer plusieurs courbes sur un même graphique on peut utiliser plusieurs fois la fonction {\fontfamily{lmtt}\selectfont  plot()}
+\bigskip\\
+\textbf{Exercice}
+
+Après avoir prévu le résultat sur papier, il vous est demandé, en {\fontfamily{lmtt}\selectfont Python}, de tracer dans l'intervalle $\displaystyle \left[-\pi ; 3\pi \right ]$, sur un même graphique, les fonctions 
+\bigskip
+\begin{itemize}
+ \item[$\bullet$] $t\mapsto \cos t$, en bleu
+   \bigskip
+ \item[$\bullet$] $t\mapsto \cos\left(t -\pi/3\right)$, en rouge
+   \bigskip
+ \item[$\bullet$] $t\mapsto \cos\left(2t -\pi/3\right)$, en vert
+\end{itemize}
+\bigskip
+ Une légende devra faire apparaître la correspondance entre chaque fonction et la couleur qui lui est associée.
+\bigskip\\
+\begin{comment}
+\begin{corrige}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL]
+from matplotlib.pyplot import *
+from numpy import *
+
+
+t=arange(-pi,3*pi,0.01)
+
+y1=cos(t)
+y2=cos(t-pi/3)
+y3=cos(2*t-pi/3)
+
+figure(1) #on impose de travailler dans la figure 1
+
+clf()
+plot(t,y1,'-b',label="cos(t)")
+plot(t,y2,'-r',label="cos(t-pi/3)")
+plot(t,y3,'-g',label="cos(2t-pi/3)")
+
+axis([-pi, 3*pi, -2, 2])
+legend()
+
+show()
+\end{lstlisting}
+\end{corrige}
+\end{comment}
+\textbf{Indication :} vous pouvez utiliser la page web {\fontfamily{lmtt}\selectfont http://matplotlib.org/users/pyplot$\_$tutorial.html}
+
+

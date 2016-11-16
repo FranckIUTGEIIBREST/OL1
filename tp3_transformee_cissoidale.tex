@@ -1,0 +1,119 @@
+\textbf{Somme de 2 fonctions sinusoïdales de m\^eme fréquence}
+
+Problème: Si  $$u_1(t)=A_1\cos(\omega t+\varphi_1)$$ et $$u_2(t)=A_2\cos(\omega t+\varphi_2)$$ on veut déterminer $A$ et $\varphi$ tels que $$u_1(t)+u_2(t)=A\cos(\omega t+\varphi)$$
+$i.e$ tels que
+$$A_1\cos(\omega t+\varphi_1)+A_2\cos(\omega t+\varphi_2)=A\cos(\omega t+\varphi)$$
+
+\section{Observations graphiques}
+Recopier et exécuter le script suivant.
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from matplotlib.pyplot import * 
+from numpy import *
+
+x=arange(-2*pi,2*pi,.05)
+
+y1=cos(pi*x)
+y2=2*cos(pi*x+pi/3)
+
+clf()
+plot(x,y1,'-g')
+plot(x,y2,'-r')
+plot(x,y1+y2,'-k')
+
+axis([-2*pi,2*pi,-3,3])
+grid() #on ajoute une grille
+show()
+\end{lstlisting}
+
+
+\begin{enumerate}
+\item Quelles sont les valeurs de $A_1$, $A_2$, $\varphi_1$ et $\varphi_2$?
+%\item Que pensez-vous de la fonction $u$?
+\item Estimer graphiquement $A$ et $\varphi$.
+\item Rajouter une ligne de commande dans le script pour tracer en noir $A \cos (\pi t+\varphi)$ avec les paramètres $A$ et $\varphi$ que vous aurez estimés.
+\item Faire varier $A_2$ et $\varphi_2$ et observer comment varient $A$ et $\varphi$.
+\item Les variations de $A$ dépendent-elles de $A_1$ et $A_2$? de $\varphi_1$ et $\varphi_2$?
+\item Mêmes questions pour les variations de $\varphi$.
+\end{enumerate}
+
+
+\section{Plongement complexe: transformée cissoïdale}
+On va "plonger" le problème réel dans le domaine des nombres complexes où sa résolution est plus simple.
+\subsection{Notation complexe d'une onde sinusoïdale}
+A toute fonction $u(t)=A\cos(\omega t+\varphi)$, on peut lui associer la fonction complexe $\underline{U(t)}$:
+\begin{center}
+ $\begin{array}{lcl}
+   \underline{U(t)} & =& A\cos(\omega t+\varphi)+jA\sin(\omega t+\varphi) \\
+   & = & A(\cos(\omega t+\varphi)+j\sin(\omega t+\varphi)) \\
+   & = & A\mathrm{e}^{j(\omega t+\varphi)} \\
+   & = & A\mathrm{e}^{j\omega t}\mathrm{e}^{j\varphi} \\
+ \end{array}$
+\end{center}
+
+$u(t)$ est la partie réelle de  $\underline{U(t)}$\\
+On a donc
+\begin{center}
+\begin{tabular}{|c|}  \hline
+\\
+$\underline{U(t)}=A\mathrm{e}^{j(\omega t+\varphi)}=A\mathrm{e}^{j\omega t}\mathrm{e}^{j\varphi}$\\
+\\
+\hline
+\end{tabular} 
+\end{center}
+
+\subsection{Somme de deux ondes sinusoïdales de même pulsation}
+Soit 
+
+$u_1(t)=A_1\cos(\omega t+\varphi_1)\qquad$  Déterminer $\underline{U_1(t)}$
+\\
+
+$u_2(t)=A_2\cos(\omega t+\varphi_2)\qquad$  Déterminer $\underline{U_2(t)}$
+\bigskip
+\begin{enumerate}
+ \item Si $u(t)=u_1(t)+u_2(t)$, déterminer $\underline{U(t)}$ en fonction de $\underline{U_1(t)}$ et $\underline{U_2(t)}$.
+ \item Exprimez $\underline{U_1(t)}$, $\underline{U_2(t)}$ puis $\underline{U(t)}$ en fonction de  $A_1$, $A_2$, $\varphi_1$ et $\varphi_2$.
+ \item Démontrer que $A$ et $\varphi$ vérifient $A\mathrm{e}^{j\varphi}=A_1\mathrm{e}^{j\varphi_1}+A_2\mathrm{e}^{j\varphi_2}$
+\end{enumerate}
+
+\subsection{Application}
+Soit $u_1(t)=\cos\left(\pi t+\displaystyle \frac{\pi}{2}\right)$ et $u_2(t)=\cos\left(\pi t-\displaystyle \frac{\pi}{6}\right)$.
+\begin{enumerate}
+\item Ecrire $\underline{U_1(t)}$ et $\underline{U_2(t)}$.
+\item Calculer $\underline{U(t)}$ puis déterminer $A$ et $\varphi$.
+\item Vérifier graphiquement la concordance de vos résultats. 
+\end{enumerate}
+\section{Les complexes avec {\fontfamily{lmtt}\selectfont Python}}
+ Le code suivant se trouve dans le fichier  {\fontfamily{lmtt}\selectfont calcul\_complexe.py} dans le dossier {\fontfamily{lmtt}\selectfont docum.geii/PYHTON\_SPYDER\_OL}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+
+from cmath import * #on importe les fonctions mathematiques pour les
+		    # nombres complexes
+		    # elles sont stockees dans la bibliotheque cmath
+
+z=1+1*1j # ou bien z=complex(1,1)
+print(z)        #on affiche le complexe z
+print(polar(z))  #on affiche le module et l'argument de z
+
+w=-2+3*1j
+print(w)  
+print('Re(w)=',w.real)   #on affiche la partie reelle de w
+print('Im(w)=',w.imag)  #on affiche la partie imaginaire de w
+print(w.conjugate()) #on demande d'afficher le conjuge de w
+
+print('|z|=',abs(w))  #on affiche le module du complexe w
+print(w**3) #on affiche le calcul de w^3
+\end{lstlisting}
+
+Pour obtenir l'aide sur la bibliothèque  {\fontfamily{lmtt}\selectfont cmath} qui contient les fontions mathématiques pour les nombres complexes, taper {\fontfamily{lmtt}\selectfont https://docs.python.org/2/library/cmath.html}
+\section{Exercices}
+
+En utilisant les déphasages et la technique de la partie 3 écrire sous forme $A\cos(\omega t+\varphi)$ les fonctions suivantes:
+\begin{enumerate}
+\item $\displaystyle f_1(t)=2\sin\left(3t+ \frac{\pi}{3}\right)$
+\item $\displaystyle f_2(t)=f_1(t)+2\cos\left(3t-\frac{5\pi}{6}\right)$
+\item $\displaystyle f_3(t)=3\cos\left(200\pi t+ \frac{\pi}{3}\right)+4\cos\left(200\pi t+ \frac{\pi}{4}\right)$
+\item En choisissant une échelle adaptée, vérifiez vos résultats grâce à une représentation graphique.
+\item \textbf{Faire valider} par l'enseignant.
+\end{enumerate}
+\bigskip
+

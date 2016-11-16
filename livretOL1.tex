@@ -1,0 +1,127 @@
+\documentclass[french,10pt]{report}
+\usepackage{a4}
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{array}
+\usepackage{delarray}
+\usepackage{listings}
+\usepackage{multicol}
+
+\usepackage{amssymb}
+
+%\usepackage[L]{thmbox}
+\newtheorem{Def}{Définition}
+\newtheorem{theo}{Théorème}
+\newtheorem{lemme}{Lemme}
+\newtheorem{cor}{Corollaire}
+\newtheorem{question}{Question}
+\newtheorem{corrige}{Correction}[section]
+\usepackage[dvips]{graphics} 
+
+%pour les graphiques
+\usepackage{graphicx}
+\usepackage{transparent} %transparence d'une image
+
+\usepackage{xcolor}
+
+\usepackage{comment}
+\includecomment{comment}
+%\excludecomment{comment}
+
+\usepackage{vmargin}
+\setmarginsrb{2cm}{1cm}{2cm}{1cm}{1cm}{1cm}{1cm}{1cm}  
+%\pagestyle{empty}
+
+
+\usepackage{tikz,pgfplots,pgf}
+\usetikzlibrary{arrows,shapes,arrows,positioning,calc,trees,snakes,plotmarks} 
+
+% En-tête et pied de page
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\fancyfoot{}
+\lfoot{\tiny{OL1 - OL2}}
+\cfoot{\tiny{\leftmark}}
+\rfoot{\tiny{\thepage /\pageref{LastPage}}}
+
+\renewcommand{\headrulewidth}{0pt} %supprime la ligne présente par défaut pour l'en-tête
+\headwidth 17cm %longueur de l'en-tête et pied de page
+ 
+\usepackage{vmargin}
+\setmarginsrb{2cm}{1cm}{2cm}{1cm}{1cm}{1cm}{1cm}{1cm} 
+
+% page de garde
+\title{\textbf{Outils logiciels - {\fontfamily{lmtt}\selectfont Spyder \& Python}}}
+\author{G.Bossard - V.Choqueuse - L.Fagon - F.Le Bolc'h - MA.Tirat}
+\date{}
+
+%fond de la page de titre
+ \usepackage{eso-pic}
+ \newcommand\BackgroundPic{%
+    \put(72,120){%
+ 		\parbox[b][\paperheight]{\paperwidth}{%
+ 		\vfill 
+ 		\centering
+ 		{\transparent{0.5}\includegraphics[width=0.5\paperwidth,height=0.4\paperheight,keepaspectratio]{images/logo_spyder.jpg}}
+ %\vfill
+ 		}
+ 	}
+ }
+%fin fond d'écran 
+
+
+%listing
+\lstset{						% Paramétrage pour les listings en C
+	language={Scilab}, 
+	basicstyle=\ttfamily \footnotesize, 
+	showstringspaces=false, 
+	keywordstyle=\color{blue}, 
+	commentstyle=\color{vert}, 
+	stringstyle=\color{red}, 
+	identifierstyle=\ttfamily,
+	frame=trBL
+}
+%fin listing 
+
+\begin{document}
+\definecolor{vert}{rgb}{0.2,0.6,0.4} 
+\AddToShipoutPicture*{\BackgroundPic}
+\maketitle
+\begin{multicols}{2}
+\setlength{\columnseprule}{1pt}
+\tableofcontents
+\end{multicols}
+\newpage
+%\bigskip
+\input{"syllabus"}
+\chapter{Introduction - Représentation graphique}
+\input{"tp1_intro_graphique"}
+\chapter{Fonctions associées}
+\input{"tp2_fct_associees"}
+\chapter{Transformée cissoïdale}
+\input{"tp3_transformee_cissoidale"}
+\chapter{Une fonction complexe}
+\input{"tp_bode1"}
+\chapter{Tracés de fonctions avec une échelle logarithmique}
+\input{"tp_bode2"}
+%\chapter{Asymptotes}
+%\input{"tp5_asymptotes"}
+%\chapter{Synthèse}
+%\input{"synthese"}
+%\chapter{Evaluation}
+%\input{"corr_tp_type"}
+%\chapter{Evaluation groupe 11A}
+%\input{"controle11A"}
+%\chapter{Polyn\^omes-Fractions rationnelles}
+%\input{"tp_poly_fr"}
+%\chapter{Séries de Fourier}
+%\input{"Fourier1"}
+%\chapter{Evaluation S2}
+%\chapter{Evaluation S2}
+%\input{"controle11"}
+\end{document}

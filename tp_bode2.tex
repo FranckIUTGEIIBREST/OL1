@@ -1,0 +1,146 @@
+
+\section{Écriture d'une fonction en {\fontfamily{lmtt}\selectfont Python} et représentation graphique}
+Pour définir une fonction qui n'est pas prédéfinie dans le logiciel (comme le sont les fonction $\cos$, $\sin$, $\tan$...), on utilise un procédé comparable à celui des fonctions en langage C.\\
+Si on veut faire une représentation graphique d'une fonction $f$, il faut créer un vecteur échantillonage (abscisses) puis un vecteur image de ces abscisses.
+\bigskip\\
+\textit{Exemple} :\\ La syntaxe du tracé de la fonction $f$ définie par $f(t)=\displaystyle \frac{1}{1+t^2}$ sur l'intervalle $[-3;5]$ pourrait être la suivante:\\
+Attention! C'est un exemple! Ce n'est pas la fonction qui vous sera demandée. Prenez le temps de bien comprendre la syntaxe.
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from numpy import *
+from matplotlib.pyplot import *
+
+def f(t):
+   import numpy as np  # non necessaire car deja importee
+   import matplotlib.pyplot as plt  # non necessaire car deja importee
+   return 1/(1+t**2)  # 1/(1+t^2)
+
+t1 = arange(-3.0, 5.0, 0.1)
+figure(1)
+plot(t1, f(t1), 'bo')
+
+\end{lstlisting}
+
+\section{{\fontfamily{lmtt}\selectfont Python} : représentations graphiques de fonctions}
+
+En utilisant des fonctions écrites en {\fontfamily{lmtt}\selectfont Python} , \textbf{tracer les courbes représentatives des fonctions du TP précédent}
+\begin{center}
+$\displaystyle \omega \mapsto \left|H(\omega)\right|$ et $\displaystyle \omega \mapsto arg(\omega)$
+\end{center}
+(On s'inspirera du script précédent)\\
+Attention, pour que les graphiques soient lisibles, bien réfléchir aux choix des fenêtres graphiques (il peut être interessant de les déterminer en fonction de $\omega_0$. Pour le tracé vous prendrez $\displaystyle \omega_0=3141$).
+\bigskip\\
+Remarque: 
+\begin{center}
+ {\fontfamily{lmtt}\selectfont subplot(nmp)}
+ 
+\textit{ n : nombre de lignes}
+ 
+\textit{ m : nombre de colonnes }
+ 
+\textit{ p : indice du dessin ($ 1 \geq p \geq nm $) }
+\end{center}
+Il est possible d'obtenir les 2 graphes sur une même {\fontfamily{lmtt}\selectfont figure} en utilisant l'instruction {\fontfamily{lmtt}\selectfont subplot(121)} avant le {\fontfamily{lmtt}\selectfont plot}  du premier graphique et l'instruction {\fontfamily{lmtt}\selectfont subplot(122)} avant le {\fontfamily{lmtt}\selectfont plot} du deuxième graphique
+\begin{corrige}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+
+from numpy import *
+from matplotlib.pyplot import *
+
+w0=3141
+
+def module(w):
+   import numpy as np  # non necessaire
+   #import matplotlib.pyplot as plt  # non necessaire
+
+   return sqrt(3)/sqrt(1+(w/w0)**2)  # 1/(1+t^2) 
+
+def argum(w):
+   import numpy as np  # non necessaire
+   #import matplotlib.pyplot as plt  # non necessaire
+   
+   return(-arctan(w/w0))
+
+def gain(w):
+   import numpy as np  # non necessaire
+   import matplotlib.pyplot as plt  # non necessaire
+   
+   return(20*log10(module(w)))
+
+
+#Attention, on ne peut pas commencer à 0 puisque log10
+w1 = arange(10, 4*w0,0.1)
+clf()
+figure(1)
+subplot(221)
+plot(w1, module(w1), '-')
+
+subplot(222)
+plot(w1, argum(w1), '-')
+
+subplot(223)
+plot(log10(w1), gain(w1), '-')
+
+#pour tracer la droite asymptote
+plot([log10(w0),log10(9*w0)], [10*log10(3),-30*log10(3)])
+
+\end{lstlisting}
+\end{corrige}
+%\newpage
+\section{Fonction logarithmique}
+\begin{Def}[Logarithme de base $a$]
+Soit $a$ un réel strictement positif, différent de 1. On définit la fonction logarithme de base $a$ par $$\log_a (x)=\frac{\ln x}{\ln a}$$
+\end{Def}
+\textbf{Exercice 1}
+\begin{enumerate} 
+\item Démontrez que $\log_{a}1=0$ quelle que soit la base.
+\item Démontrez que $\log_{a}a^p=p$
+\item Donnez une expression plus simple si possible de \\$\begin{array}{lll}
+\log_{2}4=&\qquad\log_{2}32=&\qquad\log_{2}1024=\\
+&&\\
+\log_{10}10=&\qquad\log_{10}10000=&\qquad\log_{10}e=\\
+&&\\
+\log_{16}4096=&\qquad\log_{16}1 048 576=&\qquad\log_{16}10=\\
+&&\\
+\end{array}$
+\item En {\fontfamily{lmtt}\selectfont Python}, dans la bibliothèque {\fontfamily{lmtt}\selectfont numpy} : 
+  \begin{itemize}
+    \item[$\bullet$] {\fontfamily{lmtt}\selectfont log} : fonction logarithme népérien (ln)
+    \item[$\bullet$] {\fontfamily{lmtt}\selectfont log10} : fonction logarithme de base 10 ($log_{10}$)
+  \end{itemize}
+\end{enumerate}
+\section{Gain}
+\begin{Def}[Gain]
+Les électroniciens utilisent le \textbf{gain} défini par $$\displaystyle G(\omega)=20\log_{10}\left( \left| H(\omega) \right| \right)$$
+
+Pour la représentation graphique, l'échelle des abscisses est logarithmique $i.e$ on représente, sur l'axe des abscisses, les valeurs de $\log_{10} (\omega)$ et non les valeurs de $\omega$.
+\end{Def}
+\textbf{Exercice 2}
+\begin{enumerate}
+
+
+
+\item Tracer la courbe représentative du gain $G(\omega)$ associé à la fonction $\omega \rightarrow H(\omega)$ définie dans la première partie du TP avec une échelle logarithmique en abscisses.
+
+
+\item Quel est l'intérêt principal d'une telle représentation graphique ?
+
+
+
+\item 
+On étudie l'allure de la courbe représentative de la fonction $\displaystyle \omega \rightarrow G(\omega)$
+\begin{enumerate}
+ \item Est-il possible de faire apparaître des asymptotes sur la représentation graphique.
+ \item Déterminer l'équation de ces asymptotes.
+ \item En déduire un modèle pour l'expression du gain $\displaystyle G(\omega)$ puis donner un modèle pour $\displaystyle \omega \rightarrow \left|H(\omega)\right|$
+\end{enumerate}
+
+
+
+\item 
+
+Tracer le gain pour différentes valeurs de $\omega_0$. \\
+L'allure de la courbe dépend-t-il de la valeur $\omega_0$ ?\\
+Proposer une conjecture. 
+
+
+\end{enumerate}

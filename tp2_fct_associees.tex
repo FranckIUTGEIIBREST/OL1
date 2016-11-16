@@ -1,0 +1,218 @@
+\textit{Réglage d'un générateur de basses fréquences}\\
+Un générateur de basses fréquences permet d'obtenir une tension sinusoïdale s'exprimant en fonction du temps par la fonction définie par $$f(t)=A\sin(t+\varphi)+b$$
+où les paramètres $A$, $\varphi$ et $b$ sont réglables :
+\bigskip
+\begin{itemize}
+ \item[$\bullet$] $A$, réel positif, est l'\textbf{amplitude} de la tension ;
+  \bigskip
+ \item[$\bullet$] $\varphi$ est le \textbf{déphasage} ;
+  \bigskip
+ \item[$\bullet$] $b$ est une \textbf{composante continue} ajoutée à la tension sinusoïdale. 
+\end{itemize}
+\bigskip
+On se propose d'étudier, à l'aide de {\fontfamily{lmtt}\selectfont Python}, l'influence de ces paramètres sur la courbe représentative de la fonction $f$.
+
+\section{Rôle du déphasage $\varphi$}
+Dans cette partie on fixe $A=2$ et $b=1$.
+\bigskip\\
+Sur un même graphique, tracer la courbe représentative de la fonction $f$ pour différentes valeurs de $\varphi$ variant de -2 à 2 en y ajoutant en légende la valeur de $\varphi$ correspondante. \\
+Respecter le code couleur donné dans le tableau suivant. Les principales couleurs ont été données dans le premier TP.\\
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$\varphi$&-2&-1&0&1&2\\
+\hline
+couleur&noir&bleu&vert&rouge&violet\\
+\hline
+Symbole Python&&&&&\\ \hline
+\end{tabular}
+\end{center}
+\begin{comment}
+ \begin{corrige}
+    \begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from matplotlib.pyplot import * 
+from numpy import *
+
+
+t=arange(-2*pi,2*pi,.05)
+
+
+clf()
+y=2*cos(t-2)+1
+plot(t,y,'-k',label="y=2*cos(t-2)+1")
+
+y=2*cos(t-1)+1
+plot(t,y,'-b',label="y=2*cos(t-1)+1")
+
+y=2*cos(t-0)+1
+plot(t,y,'-g',label="y=2*cos(t-0)+1")
+
+y=2*cos(t-1)+1
+plot(t,y,'-r',label="y=2*cos(t+1)+1")
+
+y=2*cos(t+2)+1
+plot(t,y,'-m',label="y=2*cos(t+2)+1")
+
+
+axis([-2*pi,2*pi,-2,7])
+grid() #on ajoute une grille
+legend()
+show()
+\end{lstlisting}
+ 
+ \end{corrige}
+\end{comment}
+\begin{enumerate}
+\item Décrire l'impact de $\varphi$ sur la représentation graphique de la fonction $f$.
+\item Par quelle transformation géométrique passe-t-on de la représentation graphique de la fonction $t\mapsto f(t)$ à la fonction $t\mapsto f(t+2)$?
+\item Par quelle transformation géométrique passe-t-on de la représentation graphique de la fonction $t\mapsto f(t)$ à la fonction $t\mapsto f(t-3)$?
+\item Tracer les courbes représentatives des fonctions $x\mapsto \sin(x)$ et $x\mapsto \cos(x)$, dans l'intervalle $\displaystyle \left[-2T ; 3T \right]$ où $T$ est la période commune aux deux fonctions. Rajouter une légende.
+\item Exprimer $\cos$ en fonction de $\sin$ en introduisant un déphasage, puis $\sin$ en fonction de $\cos$. 
+\item Soit $u(t)=A\cos(\omega t+\varphi)$ une fonction sinusoidale. Trouver $\psi$ en fonction de $\varphi$ tel que $u(t)=A\sin(\omega t+\psi)$. Faire valider.
+
+\end{enumerate}
+\section{Rôle de $b$}
+Dans cette partie on fixe $A=2$ et $\varphi=\displaystyle \frac{\pi}{3}$.
+\bigskip\\
+Sur un même graphique, tracer la courbe représentative de la fonction $f$ pour différentes valeurs de $b$ variant de -2 à 2 en y ajoutant en légende la valeur de $b$ correspondante. \\
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$b$&-2&-1&0&1&2\\
+\hline
+couleur&noir&bleu&vert&rouge&violet\\
+\hline
+Symbole Python&&&&&\\ \hline
+\end{tabular}
+\end{center}
+\begin{comment}
+ \begin{corrige}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from matplotlib.pyplot import * 
+from numpy import *
+
+
+t=arange(-2*pi,2*pi,.05)
+
+
+clf()
+y=2*cos(t+pi/3)+0
+plot(t,y,'-k',label="y=2*cos(t+pi/3)+0")
+
+y=2*cos(t+pi/3)+1
+plot(t,y,'-b',label="y=2*cos(t+pi/3)+1")
+
+y=2*cos(t+pi/3)+2
+plot(t,y,'-g',label="y=2*cos(t+pi/3)+2")
+
+y=2*cos(t+pi/3)+3
+plot(t,y,'-r',label="y=2*cos(t+pi/3)+3")
+
+y=2*cos(t+pi/3)+4
+plot(t,y,'-m',label="y=2*cos(t+pi/3)+4")
+
+
+axis([-2*pi,2*pi,-2,8])
+grid() #on ajoute une grille
+legend()
+show()
+\end{lstlisting}
+ 
+ \end{corrige}
+\end{comment}
+\begin{enumerate}
+\item Décrire l'impact de $b$ sur la représentation graphique de la fonction $f$.
+\item Par quelle transformation géométrique passe-t-on de la représentation graphique de la fonction $t\mapsto f(t)$ à la fonction $t\mapsto f(t)+2$?
+\item Par quelle transformation géométrique passe-t-on de la représentation graphique de la fonction $t\mapsto f(t)$ à la fonction $t\mapsto f(t)-3$?
+%\item Observer les courbes représentatives des fonctions $\cos$ et $\sin$. Exprimer $\cos$ en fonction de $\sin$.
+%\item Soit $u(t)=A\cos(\omega t+\varphi)$ une fonction sinusoidale. Trouver $\varphi'$ tel que $u(t)=A\sin(\omega t+\varphi')$
+\end{enumerate}
+
+\section{Rôle de l'amplitude $A$}
+Dans cette partie on fixe $\varphi=\displaystyle \frac{\pi}{3}$ et $b=1$.
+\bigskip\\
+Sur un même graphique, tracer la courbe représentative de la fonction $f$ pour différentes valeurs de $A$ variant de 0 à 4 en y ajoutant en légende la valeur de $A$ correspondante. \\
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$A$&0&1&2&3&4\\
+\hline
+couleur&noir&bleu&vert&rouge&violet\\
+\hline
+Symbole Python&&&&&\\ \hline
+\end{tabular}
+\end{center}
+
+
+\bigskip
+
+Décrire l'impact de $A$ sur la représentation graphique de la fonction $f$.
+\begin{comment}
+ \begin{corrige}
+    \begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from matplotlib.pyplot import * 
+from numpy import *
+
+
+t=arange(-2*pi,2*pi,.05)
+
+
+clf()
+y=0*cos(t+pi/3)+1
+plot(t,y,'-k',label="y=0*cos(t+pi/3)+1")
+
+y=1*cos(t+pi/3)+1
+plot(t,y,'-b',label="y=1*cos(t+pi/3)+1")
+
+y=2*cos(t+pi/3)+1
+plot(t,y,'-g',label="y=2*cos(t+pi/3)+1")
+
+y=3*cos(t+pi/3)+1
+plot(t,y,'-r',label="y=3*cos(t+pi/3)+1")
+
+y=4*cos(t+pi/3)+1
+plot(t,y,'-m',label="y=4*cos(t+pi/3)+1")
+
+
+axis([-2*pi,2*pi,-4,8])
+grid() #on ajoute une grille
+legend()
+show()
+\end{lstlisting}
+ 
+ \end{corrige}
+\end{comment}
+
+\section{Exercices}
+Les exercices suivants sont à faire \textbf{sur papier}, sauf si la consigne est d'utiliser le logiciel. Vous pourrez ensuite \textbf{vérifier} vos résultats en vous aidant d'une représentation graphique sous {\fontfamily{lmtt}\selectfont Python}.
+\subsection{Exercice 1: Redressement}
+Soit $f(t)=|\sin(\pi t)|$.
+\begin{enumerate}
+\item La fonction est-elle paire? impaire? Le démontrer.
+\item Est-elle périodique? Si oui, déterminer sa période.
+\item Tracer l'allure de la courbe. Quel est "l'impact" de la valeur absolue sur la représentation graphique?
+\item Pourquoi ce signal est-il appelé "signal redressé à double alternance"?
+%\item Quelle serait l'équation d'un signal à "simple alternance"?
+\end{enumerate}
+
+\subsection{Exercice 2: Sinus décalé, redressé}
+Soit $f(t)=\sin(t)$. Tracer sur l'intervalle $[-2\pi;2\pi]$ les fonctions suivantes:
+\begin{enumerate}
+\item $\displaystyle f_1(t)=f\left(t+ \frac{\pi}{3}\right)+2$
+\item $\displaystyle f_2(t)=3\left |f\left(t- \frac{\pi}{4}\right)\right|$
+\item En choisissant une échelle adaptée, vérifier vos tracés avec le logiciel.
+\end{enumerate}
+\bigskip
+\textbf{Indication :} utiliser la page web {\fontfamily{lmtt}\selectfont http://matplotlib.org/api/pyplot\_summary.html}
+
+%\begin{comment}
+%\begin{corrige}
+%\begin{lstlisting}
+%-->x=[-%pi:0.01:3*%pi]'; 
+
+%-->clf,plot2d(x,[cos(x) cos(x-%pi/3) cos(2*x-%pi/3)],
+	%		leg="y=cos(t)@y=cos(t-pi/3)@y=cos(2t-pi/3)")
+%\end{lstlisting}
+%\end{corrige}
+%\end{comment}

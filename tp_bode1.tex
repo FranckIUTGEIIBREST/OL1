@@ -1,0 +1,115 @@
+Pour cet exercice, le logiciel va vous aider à énoncer des conjectures sur une fonction à valeurs complexes. L'exercice demande un travail de réflexion et une étude "sur papier".
+\section{Écriture d'une fonction en {\fontfamily{lmtt}\selectfont Python}}
+
+On souhaite définir la fonction $\displaystyle f(t)=\frac{1}{1+t^2}$ et calculer des valeurs de cette fonction en certains points. Pour l'exemple, on a choisi les valeurs suivantes pour la variable $t$ : 0, 1, e et $\pi$. Il est donc difficile ici d'utiliser la commande {\fontfamily{lmtt}\selectfont arange}
+
+Il vous est demandé de lire et comprendre le code ci-dessous :
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from numpy import *
+
+#Attention l'indentation est PRIMORDIALE !!!!
+
+def f(t):
+   import numpy as np  # non necessaire car deja importee
+   
+   return 1/(1+t**2)  # 1/(1+t^2)
+#fin de la fonction
+
+abscisse=array([0,1,exp(1),pi])
+valeurEchantillon=f(abscisse)
+
+print(valeurEchantillon) 
+\end{lstlisting}
+\section{Définition d'une fonction complexe $H(\omega)$ dite fonction de transfert}
+Soit $\omega_0$ un nombre réel strictement positif et soit $h$ la fonction réelle de la variable $p$ définie par $\displaystyle h(p)=\frac{\sqrt{3}}{1+\frac{p}{\omega_0}}$
+
+On définit la fonction $H$, dans $\mathbb{R}^+$, par $\displaystyle H(\omega)=h(j\omega)=\frac{\sqrt{3}}{1+j\frac{\omega}{\omega_0}}$
+\begin{enumerate}
+ \item Donner l'expression exacte en fonction de $\omega$ de
+\bigskip
+  \begin{itemize}
+   \item[$\bullet$] la partie réelle de $\displaystyle H(\omega)$ : $\mathrm{Re}\left(H(\omega)\right)=$
+\bigskip
+    \item[$\bullet$] la partie imaginaire de $\displaystyle H(\omega)$ : $\mathrm{Im}\left(H(\omega)\right)=$
+\bigskip
+    \item[$\bullet$] le module de $\displaystyle H(\omega)$: $\left|H(\omega)\right|=$
+\bigskip
+    \item[$\bullet$] l'argument de $\displaystyle H(\omega)$ : $\mathrm{Arg}\left(H(\omega)\right)=$        
+  \end{itemize}
+\bigskip
+\item Donner un algorithme sur papier qui renvoit l'argument d'un nombre complexe $u=a+jb$.\\
+\underline{Remarques:} 
+ \begin{itemize}
+   \item[$\bullet$] le précédent TP a fourni les fonctions pour obtenir la partie réelle et la partie imaginaire d'un nombre complexe
+   \item[$\bullet$] {\fontfamily{lmtt}\selectfont arctan(x)} est la fonction arctangente qui renvoit le réel $\theta$ de l'intervalle $\displaystyle \left]- \frac{\pi}{2}; \frac{\pi}{2}\right[$ tel que $\displaystyle \tan(\theta)=x$
+  \end{itemize}
+\item Premiers calculs: calculer la partie réelle, la partie imaginaire, le module et l'argument de $\displaystyle H(\omega)$ lorsque $\omega=0$, puis lorsque $\omega=\omega_0$.
+\bigskip
+ \item Remplir le tableau ci-après en vous servant du logiciel \texttt{Python}.\\
+  
+ %\textbf{Rappel :} pour calculer le module et l'argument d'un nombre complexe sous \texttt{Scilab}, on utilise la commande \texttt{polar}. Par exemple, si \texttt{u} est un nombre complexe, {\fontfamily{lmtt}\selectfont [r, theta]=polar(u)} calcule le module et l'argument du \texttt{u}.
+
+ \renewcommand{\arraystretch}{2}
+ \begin{tabular}{|p{2.8cm}|p{1.5cm}|p{2.8cm}|p{2.8cm}|} \hline
+ \centering Nombre complexe & \centering $\displaystyle \frac{\omega}{\omega_0}$ & \centering Module &  Argument \\ \hline
+ \centering$\displaystyle H(0)$ & & &\\ \hline
+ \centering$\displaystyle H\left(\frac{\omega_0}{100}\right)$ & & &\\ \hline
+ \centering$\displaystyle H\left(\frac{\omega_0}{10}\right)$ & & &\\ \hline
+ \centering$\displaystyle H\left(\frac{\omega_0}{3}\right)$ & & &\\ \hline
+ \centering$\displaystyle H\left(\frac{\omega_0}{2}\right)$ & & &\\ \hline
+ \centering$\displaystyle H(\omega_0)$ & & &\\ \hline
+ \centering$\displaystyle H(2\omega_0)$ & & &\\ \hline
+ \centering$\displaystyle H(3\omega_0)$ & & &\\ \hline
+ \centering$\displaystyle H(10\omega_0)$ & & &\\ \hline
+ \centering$\displaystyle H(100\omega_0)$ & & &\\ \hline
+\end{tabular} 
+\renewcommand{\arraystretch}{1}
+ \bigskip\\
+ 
+
+\end{enumerate}
+\begin{corrige}
+\begin{lstlisting}[language={Python}, basicstyle=\ttfamily \footnotesize, showstringspaces=false, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily,frame=trBL] 
+from numpy import *
+from matplotlib.pyplot import *
+
+w0=3141
+
+def module(w):
+   import numpy as np  # non necessaire
+   #import matplotlib.pyplot as plt  # non necessaire
+
+   return sqrt(3)/sqrt(1+(w/w0)**2)  # 1/(1+t^2)  # 1/(1+t^2)
+
+def argum(w):
+   import numpy as np  # non necessaire
+   #import matplotlib.pyplot as plt  # non necessaire
+   
+   return(-arctan(w/w0))
+
+
+omega=array([0,w0/100,w0/10,w0/3,w0/2,w0,2*w0,3*w0,10*w0,100*w0])
+colonne_2=module(omega)
+print(colonne_2)
+
+colonne_3=argum(omega)
+print(colonne_3)
+\end{lstlisting}
+\end{corrige}
+\section{Étude sommaire du module $\left| H(\omega)\right|$.} Déterminer les limites suivantes :
+  \begin{enumerate}
+   \item $\displaystyle \lim_{\omega \rightarrow 0^{+}}\left| H(\omega)\right|$
+   \item $\displaystyle \lim_{\omega \rightarrow \omega_0}\left| H(\omega)\right|$
+   \item $\displaystyle \lim_{\omega \rightarrow +\infty}\left| H(\omega)\right|$
+   \item Esquisser sur papier l'allure de la courbe représentative $\displaystyle \omega \mapsto \left| H(\omega)\right|$.
+   \item Proposer un modèle très simple, voire simpliste, pour la courbe représentative de la fonction $\displaystyle \omega \mapsto \left| H(\omega)\right|$
+  \end{enumerate} 
+\section{Étude sommaire de l'argument $\mathrm{arg}\left( H(\omega)\right)$.} Déterminer les limites suivantes :
+  \begin{enumerate}
+   \item $\displaystyle \lim_{\omega \rightarrow 0^{+}}\mathrm{arg}\left(H(\omega)\right)$
+   \item $\displaystyle \lim_{\omega \rightarrow \omega_0}\mathrm{arg}\left(H(\omega)\right)$
+   \item $\displaystyle \lim_{\omega \rightarrow +\infty}\mathrm{arg}\left(H(\omega)\right)$
+   \item Esquisser sur papier l'allure de la courbe représentative $\displaystyle \omega \mapsto \mathrm{arg}\left(H(\omega)\right)$.
+   \item Proposer un modèle très simple, voire simpliste, pour la courbe représentative de la fonction $\displaystyle \omega \mapsto \mathrm{arg}\left(H(\omega)\right)$
+  \end{enumerate} 
+\bigskip
